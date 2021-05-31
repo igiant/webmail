@@ -186,13 +186,11 @@ func (c *ClientConnection) SessionGetUserVoiceUrl() (string, error) {
 	return accessUrl.Result.AccessUrl, err
 }
 
-// Login - [KLoginMethod]
+// Login - create connection to api server and get security token.
 // Parameters
 //	userName
 //	password
 //	application - application descriminator, note that with session to admin you cannot log in webmail
-// Return
-//	token
 func (c *ClientConnection) Login(userName string, password string, app *ApiApplication) error {
 	if app == nil {
 		app = NewApplication("", "", "")
