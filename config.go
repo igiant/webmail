@@ -18,6 +18,12 @@ type parameters struct {
 	Params  interface{} `json:"params,omitempty"`
 }
 
+type loginStruct struct {
+	UserName    string         `json:"userName"`
+	Password    string         `json:"password"`
+	Application ApiApplication `json:"application"`
+}
+
 type Config struct {
 	url string
 	id  int

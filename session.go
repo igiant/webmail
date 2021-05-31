@@ -193,15 +193,14 @@ func (c *ClientConnection) SessionGetUserVoiceUrl() (string, error) {
 //	application - application descriminator, note that with session to admin you cannot log in webmail
 // Return
 //	token
-func (c *ClientConnection) Login(userName string, password string, application ApiApplication) (string, error) {
-	params := struct {
-		UserName    string         `json:"userName"`
-		Password    string         `json:"password"`
-		Application ApiApplication `json:"application"`
-	}{userName, password, application}
+func (c *ClientConnection) Login(userName string, password string, app *ApiApplication) error {
+	if app == nil {
+		app = NewApplication("", "", "")
+	}
+	params := loginStruct{userName, password, *app}
 	data, err := c.CallRaw("Session.login", params)
 	if err != nil {
-		return "", err
+		return err
 	}
 	token := struct {
 		Result struct {
@@ -209,22 +208,17 @@ func (c *ClientConnection) Login(userName string, password string, application A
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &token)
-	return token.Result.Token, err
+	if err != nil {
+		return err
+	}
+	c.Token = &token.Result.Token
+	return nil
 }
 
 // Logout - [KLogoutMethod]
-func (c *ClientConnection) Logout() (string, error) {
-	data, err := c.CallRaw("Session.logout", nil)
-	if err != nil {
-		return "", err
-	}
-	redirectUrl := struct {
-		Result struct {
-			RedirectUrl string `json:"redirectUrl"`
-		} `json:"result"`
-	}{}
-	err = json.Unmarshal(data, &redirectUrl)
-	return redirectUrl.Result.RedirectUrl, err
+func (c *ClientConnection) Logout() error {
+	_, err := c.CallRaw("Session.logout", nil)
+	return err
 }
 
 // SessionSetOutOfOffice - Set the Auto Reply settings
