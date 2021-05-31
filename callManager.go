@@ -1,5 +1,7 @@
 package webmail
 
+import "encoding/json"
+
 type OperatorExtension struct {
 	ExtensionId  KId    `json:"extensionId"`
 	TelNum       string `json:"telNum"`

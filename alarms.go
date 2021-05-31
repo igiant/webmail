@@ -1,5 +1,7 @@
 package webmail
 
+import "encoding/json"
+
 type Alarm struct {
 	Type         ItemType    `json:"type"`         // [READ-ONLY] only 'Calendar' and 'Task' are valid
 	ItemId       KId         `json:"itemId"`       // [READ-ONLY] global identification of occurrence

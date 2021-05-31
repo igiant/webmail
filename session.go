@@ -36,14 +36,14 @@ type QuotaInfo struct {
 	PercentLimitForWarning int    `json:"percentLimitForWarning"` // Value in percent that user has to exceed to be warned
 }
 
-// If this policy is enabled, passwords must meet the following minimum requirements when they are changed or created:
+// PasswordPolicy - If this policy is enabled, passwords must meet the following minimum requirements when they are changed or created:
 // - Passwords must not contain the user's entire and checks are not case sensitive
 // - Passwords must contain characters from three of the following five categories:
-//  - Uppercase characters of European languages (A through Z, with diacritic marks, Greek and Cyrillic characters)
-//  - Lowercase characters of European languages (a through z, sharp-s, with diacritic marks, Greek and Cyrillic characters)
-//  - Base 10 digits (0 through 9)
-//  - Nonalphanumeric characters: ~!@#$%^&*_-+=`|\(){}[]:;"'<>,.?/
-// PasswordPolicy -  - Any Unicode character that is categorized as an alphabetic character but is not uppercase or lowercase. This includes Unicode characters from Asian languages.
+// - Uppercase characters of European languages (A through Z, with diacritic marks, Greek and Cyrillic characters)
+// - Lowercase characters of European languages (a through z, sharp-s, with diacritic marks, Greek and Cyrillic characters)
+// - Base 10 digits (0 through 9)
+// - Nonalphanumeric characters: ~!@#$%^&*_-+=`|\(){}[]:;"'<>,.?/
+// - Any Unicode character that is categorized as an alphabetic character but is not uppercase or lowercase. This includes Unicode characters from Asian languages.
 type PasswordPolicy struct {
 	IsEnabled bool `json:"isEnabled"`
 	MinLength int  `json:"minLength"`
@@ -186,7 +186,7 @@ func (c *ClientConnection) SessionGetUserVoiceUrl() (string, error) {
 	return accessUrl.Result.AccessUrl, err
 }
 
-// SessionLogin - [KLoginMethod]
+// Login - [KLoginMethod]
 // Parameters
 //	userName
 //	password
@@ -212,7 +212,7 @@ func (c *ClientConnection) Login(userName string, password string, application A
 	return token.Result.Token, err
 }
 
-// SessionLogout - [KLogoutMethod]
+// Logout - [KLogoutMethod]
 func (c *ClientConnection) Logout() (string, error) {
 	data, err := c.CallRaw("Session.logout", nil)
 	if err != nil {

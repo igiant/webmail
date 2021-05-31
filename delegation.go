@@ -1,20 +1,21 @@
 package webmail
 
+import "encoding/json"
+
 type InboundDelegation struct {
-	Principal kerio::jsonapi::webmail::principals::Principal `json:"principal"` // [READ-ONLY]
-	MailboxId KId `json:"mailboxId"` // [READ-ONLY] root folder ID 
-	Accepted bool `json:"accepted"` 
+	Principal Principal `json:"principal"` // [READ-ONLY]
+	MailboxId KId       `json:"mailboxId"` // [READ-ONLY] root folder ID
+	Accepted  bool      `json:"accepted"`
 }
 
 type InboundDelegationList []InboundDelegation
 
 type OutboundDelagation struct {
-	Principal kerio::jsonapi::webmail::principals::Principal `json:"principal"` 
-	IsInboxRW bool `json:"isInboxRW"` 
+	Principal Principal `json:"principal"`
+	IsInboxRW bool      `json:"isInboxRW"`
 }
 
 type OutboundDelagationList []OutboundDelagation
-
 
 // DelegationGet - Get list of accounts which the user set for delegation.
 // Return
@@ -32,7 +33,6 @@ func (c *ClientConnection) DelegationGet() (OutboundDelagationList, error) {
 	err = json.Unmarshal(data, &list)
 	return list.Result.List, err
 }
-
 
 // DelegationSet - Set list of accounts for delegation.
 // Parameters
@@ -61,7 +61,6 @@ func (c *ClientConnection) DelegationGetInbound() (InboundDelegationList, error)
 	err = json.Unmarshal(data, &list)
 	return list.Result.List, err
 }
-
 
 // DelegationSetInbound - Set list of accounts whom is the user delegate.
 // Parameters

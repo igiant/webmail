@@ -6,20 +6,18 @@ type StringList []string
 // IntegerList - Type for lists of integers.
 type IntegerList []int
 
-// Name-value pair
 // NamedValue - Note: all fields must be assigned if used in set methods
 type NamedValue struct {
-	Name  string `json:"name"`
+	Name  string `json:"name"` // Name-value pair
 	Value string `json:"value"`
 }
 
 // NamedValueList - List of name-value pairs
 type NamedValueList []NamedValue
 
-// Name-multivalue pair
 // NamedMultiValue - Note: all fields must be assigned if used in set methods
 type NamedMultiValue struct {
-	Name  string     `json:"name"`
+	Name  string     `json:"name"` // Name-multivalue pair
 	Value StringList `json:"value"`
 }
 
@@ -44,13 +42,13 @@ const (
 type CompareOperator string
 
 const (
-	Eq           CompareOperator = "Eq"       // '=' - equal
-	NotEq        CompareOperator = "NotEq"    // '<>' - not equal
-	LessThan     CompareOperator = "LessThan" // '<' - lower that
-	GreaterThan, // CompareOperator = "GreaterThan,//" // '>' - greater that
-	LessEq CompareOperator = "LessEq" // '<=' - lower or equal
-	GreaterEq CompareOperator = "GreaterEq" // '>=' - greater or equal
-	Like      CompareOperator = "Like"      // contains substring, % is wild character
+	Eq          CompareOperator = "Eq"          // '=' - equal
+	NotEq       CompareOperator = "NotEq"       // '<>' - not equal
+	LessThan    CompareOperator = "LessThan"    // '<' - lower that
+	GreaterThan CompareOperator = "GreaterThan" // '>' - greater that
+	LessEq      CompareOperator = "LessEq"      // '<=' - lower or equal
+	GreaterEq   CompareOperator = "GreaterEq"   // '>=' - greater or equal
+	Like        CompareOperator = "Like"        // contains substring, % is wild character
 )
 
 // LogicalOperator - Compound Operator
@@ -81,7 +79,7 @@ type SortOrder struct {
 // SortOrderList - List of Sorting Orders
 type SortOrderList []SortOrder
 
-// General Query for Searching
+// SearchQuery - General Query for Searching
 // Query substitution (quicksearch):
 // SearchQuery doesn't support complex queries, only queries
 // with all AND operators (or all OR operators) are supported.
@@ -144,6 +142,7 @@ const (
 )
 
 // Units used for handling large values of bytes.
+
 // ByteUnits - See also userinfo.idl: enum UserValueUnits.
 type ByteUnits string
 
@@ -157,6 +156,7 @@ const (
 )
 
 // Stores size of very large values of bytes e.g. for user quota
+
 // ByteValueWithUnits - Note: all fields must be assigned if used in set methods
 type ByteValueWithUnits struct {
 	Value int       `json:"value"`
@@ -164,6 +164,7 @@ type ByteValueWithUnits struct {
 }
 
 // Settings of size limit
+
 // SizeLimit - Note: all fields must be assigned if used in set methods
 type SizeLimit struct {
 	IsActive bool               `json:"isActive"`
@@ -193,6 +194,7 @@ const (
 	StoreStatusNew      StoreStatus = "StoreStatusNew"      // added to manager but not synced to configuration store
 )
 
+// Time
 // When using start and limit to only get a part of all results
 // (e.g. only 20 users, skipping the first 40 users),
 // use this special limit value for unlimited count
@@ -217,6 +219,7 @@ type Date struct {
 }
 
 // A string that can be switched on/off. String is meaningful only if switched on.
+
 // OptionalString - Note: all fields must be assigned if used in set methods
 type OptionalString struct {
 	Enabled bool   `json:"enabled"`
@@ -230,6 +233,7 @@ type OptionalLong struct {
 }
 
 // IP Address Group / Time Range / ... that can be switched on/off
+
 // OptionalEntity - Note: all fields must be assigned if used in set methods
 type OptionalEntity struct {
 	Enabled bool   `json:"enabled"`
@@ -238,6 +242,7 @@ type OptionalEntity struct {
 }
 
 // Message can contain replacement marks: { "User %1 cannot be deleted.", ["jsmith"], 1 }.
+
 // LocalizableMessageParameters - This is the parameters structure.
 type LocalizableMessageParameters struct {
 	PositionalParameters StringList `json:"positionalParameters"` // additional strings to replace the placeholders in message (first string replaces %1 etc.)

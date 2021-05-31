@@ -1,5 +1,7 @@
 package webmail
 
+import "encoding/json"
+
 type PrincipalType string
 
 const (

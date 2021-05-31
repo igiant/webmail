@@ -9,7 +9,7 @@ import (
 
 func TestNewConfig(t *testing.T) {
 	conf := NewConfig("myserver.ru")
-	if conf.url != "https://myserver.ru:4040/admin/api/jsonrpc" {
+	if conf.url != "https://myserver.ru:443/webmail/api/jsonrpc" {
 		t.Error("invalid URL")
 	}
 }

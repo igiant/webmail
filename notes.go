@@ -1,5 +1,7 @@
 package webmail
 
+import "encoding/json"
+
 // NoteColor - Color of note
 type NoteColor string
 
@@ -13,10 +15,10 @@ const (
 
 // NotePosition - Position of note
 type NotePosition struct {
-	XOffset unsignedlong `json:"xOffset"`
-	YOffset unsignedlong `json:"yOffset"`
-	XSize   unsignedlong `json:"xSize"`
-	YSize   unsignedlong `json:"ySize"`
+	XOffset uint `json:"xOffset"`
+	YOffset uint `json:"yOffset"`
+	XSize   uint `json:"xSize"`
+	YSize   uint `json:"ySize"`
 }
 
 // Note - Note details

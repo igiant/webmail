@@ -27,15 +27,15 @@ const (
 	FIDeleted  FolderIcon = "FIDeleted"
 )
 
-// SyncFolder - Synchronized folder.
-type SyncFolder struct {
+// MobileSyncFolder - Synchronized folder.
+type MobileSyncFolder struct {
 	FolderName      string        `json:"folderName"`      // folder name
 	FolderTypeIcon  FolderIcon    `json:"folderTypeIcon"`  // mail,contact...
 	LastSyncDate    DateTimeStamp `json:"lastSyncDate"`    // date of last synchronization
 	LastSyncDateIso UtcDateTime   `json:"lastSyncDateIso"` // date of last synchronization
 }
 
-type SyncFolderList []SyncFolder
+type MobileSyncFolderList []MobileSyncFolder
 
 // SyncMethod - Used synchronization method.
 type SyncMethod string
@@ -54,20 +54,20 @@ const (
 
 // MobileDevice - Mobile device properties.
 type MobileDevice struct {
-	ProtocolType        ProtocolType   `json:"protocolType"`
-	DeviceId            string         `json:"deviceId"`
-	ProtocolVersion     string         `json:"protocolVersion"`     // used ActiveSync protocol version
-	RegistrationDate    DateTimeStamp  `json:"registrationDate"`    // date of registration
-	RegistrationDateIso UtcDateTime    `json:"registrationDateIso"` // date of registration
-	LastSyncDate        DateTimeStamp  `json:"lastSyncDate"`        // date of last synchronization
-	LastSyncDateIso     UtcDateTime    `json:"lastSyncDateIso"`     // date of last synchronization
-	FolderList          SyncFolderList `json:"folderList"`          // list of synchronized folders
-	Status              DeviceStatus   `json:"status"`              // wipe status
-	Method              SyncMethod     `json:"method"`              // synchronization method
-	RemoteHost          string         `json:"remoteHost"`          // typically IP address of device
-	Os                  string         `json:"os"`                  // operating system - eg. Windows Mobile(R) 2003
-	Platform            string         `json:"platform"`            // PocketPC
-	DeviceIcon          string         `json:"deviceIcon"`          // Device icon Eg. 'pocketpc' or 'unknown'
+	ProtocolType        ProtocolType         `json:"protocolType"`
+	DeviceId            string               `json:"deviceId"`
+	ProtocolVersion     string               `json:"protocolVersion"`     // used ActiveSync protocol version
+	RegistrationDate    DateTimeStamp        `json:"registrationDate"`    // date of registration
+	RegistrationDateIso UtcDateTime          `json:"registrationDateIso"` // date of registration
+	LastSyncDate        DateTimeStamp        `json:"lastSyncDate"`        // date of last synchronization
+	LastSyncDateIso     UtcDateTime          `json:"lastSyncDateIso"`     // date of last synchronization
+	FolderList          MobileSyncFolderList `json:"folderList"`          // list of synchronized folders
+	Status              DeviceStatus         `json:"status"`              // wipe status
+	Method              SyncMethod           `json:"method"`              // synchronization method
+	RemoteHost          string               `json:"remoteHost"`          // typically IP address of device
+	Os                  string               `json:"os"`                  // operating system - eg. Windows Mobile(R) 2003
+	Platform            string               `json:"platform"`            // PocketPC
+	DeviceIcon          string               `json:"deviceIcon"`          // Device icon Eg. 'pocketpc' or 'unknown'
 }
 
 // MobileDeviceList - List of mobile devices.

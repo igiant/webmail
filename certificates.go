@@ -1,5 +1,7 @@
 package webmail
 
+import "encoding/json"
+
 type Validity struct {
 	IsValid bool               `json:"isValid"`
 	Error   LocalizableMessage `json:"error"`

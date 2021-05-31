@@ -41,6 +41,7 @@ const (
 )
 
 // Enumerate of attendee participation status. It specifies the participation status for the calendar user
+
 // PartStatus - specified by the property. If not specified, the default value is PartNotResponded.
 type PartStatus string
 

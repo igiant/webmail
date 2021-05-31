@@ -43,6 +43,8 @@ type Watermark int64
 
 type PriorityType string
 
+type jsonstring string
+
 const (
 	Normal PriorityType = "Normal" // default value
 	Low    PriorityType = "Low"
