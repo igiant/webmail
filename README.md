@@ -18,16 +18,16 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/igiant/connect"
+	"github.com/igiant/webmail"
 )
 
 func main() {
-	config := connect.NewConfig("server_addr")
+	config := webmail.NewConfig("server_addr")
 	conn, err := config.NewConnection()
 	if err != nil {
 		log.Fatal(err)
 	}
-	app := &connect.Application{
+	app := &webmail.ApiApplication{
 		Name:    "MyApp",
 		Vendor:  "Me",
 		Version: "v0.0.1",
