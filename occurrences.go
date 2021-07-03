@@ -50,7 +50,8 @@ type OccurrenceList []Occurrence
 //	query - query attributes and limits
 // Return
 //	list - all found events
-func (c *ClientConnection) OccurrencesGet(folderIds KIdList, query SearchQuery) (OccurrenceList, error) {
+//  totalItems - number of events found if there is no limit
+func (c *ClientConnection) OccurrencesGet(folderIds KIdList, query SearchQuery) (OccurrenceList, int, error) {
 	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		FolderIds KIdList     `json:"folderIds"`
@@ -58,15 +59,16 @@ func (c *ClientConnection) OccurrencesGet(folderIds KIdList, query SearchQuery) 
 	}{folderIds, query}
 	data, err := c.CallRaw("Occurrences.get", params)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 	list := struct {
 		Result struct {
-			List OccurrenceList `json:"list"`
+			List       OccurrenceList `json:"list"`
+			TotalItems int            `json:"totalItems"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, err
+	return list.Result.List, list.Result.TotalItems, err
 }
 
 // OccurrencesGetById - Get an occurrence.

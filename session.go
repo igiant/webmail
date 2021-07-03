@@ -298,22 +298,24 @@ func (c *ClientConnection) SessionWhoAmI() (*UserInfo, error) {
 //	query - query attributes and limits
 // Return
 //	list - mobile devices of given user
-func (c *ClientConnection) SessionGetMobileDeviceList(query SearchQuery) (MobileDeviceList, error) {
+//  totalItems - number of mobile devices found for given user
+func (c *ClientConnection) SessionGetMobileDeviceList(query SearchQuery) (MobileDeviceList, int, error) {
 	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		Query SearchQuery `json:"query"`
 	}{query}
 	data, err := c.CallRaw("Session.getMobileDeviceList", params)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 	list := struct {
 		Result struct {
-			List MobileDeviceList `json:"list"`
+			List       MobileDeviceList `json:"list"`
+			TotalItems int              `json:"totalItems"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, err
+	return list.Result.List, list.Result.TotalItems, err
 }
 
 // SessionRemoveMobileDevice - Remove mobile device from the list of user's mobile devices.

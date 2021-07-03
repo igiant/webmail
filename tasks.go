@@ -47,7 +47,8 @@ type TaskList []Task
 //	query - query attributes and limits
 // Return
 //	list - all found tasks
-func (c *ClientConnection) TasksGet(folderIds KIdList, query SearchQuery) (TaskList, error) {
+//  totalItems - number of tasks found if there is no limit
+func (c *ClientConnection) TasksGet(folderIds KIdList, query SearchQuery) (TaskList, int, error) {
 	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		FolderIds KIdList     `json:"folderIds"`
@@ -55,15 +56,16 @@ func (c *ClientConnection) TasksGet(folderIds KIdList, query SearchQuery) (TaskL
 	}{folderIds, query}
 	data, err := c.CallRaw("Tasks.get", params)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 	list := struct {
 		Result struct {
-			List TaskList `json:"list"`
+			List       TaskList `json:"list"`
+			TotalItems int      `json:"totalItems"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, err
+	return list.Result.List, list.Result.TotalItems, err
 }
 
 // TasksGetById - Get an tasks.

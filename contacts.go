@@ -120,7 +120,8 @@ func (c *ClientConnection) ContactsCreate(contacts ContactList) (ErrorList, Crea
 //	query - query attributes and limits
 // Return
 //	list - all found contacts
-func (c *ClientConnection) ContactsGet(folderIds KIdList, query SearchQuery) (ContactList, error) {
+//  totalItems - number of contacts found if there is no limit
+func (c *ClientConnection) ContactsGet(folderIds KIdList, query SearchQuery) (ContactList, int, error) {
 	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		FolderIds KIdList     `json:"folderIds"`
@@ -128,15 +129,16 @@ func (c *ClientConnection) ContactsGet(folderIds KIdList, query SearchQuery) (Co
 	}{folderIds, query}
 	data, err := c.CallRaw("Contacts.get", params)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 	list := struct {
 		Result struct {
-			List ContactList `json:"list"`
+			List       ContactList `json:"list"`
+			TotalItems int         `json:"totalItems"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, err
+	return list.Result.List, list.Result.TotalItems, err
 }
 
 // ContactsGetFromCache - id, folderId, watermark, type, commonName, titleAfter, titleBefore, firstName, middleName, surName, nickName, emailAddresses, phoneNumbers, photo
@@ -145,7 +147,8 @@ func (c *ClientConnection) ContactsGet(folderIds KIdList, query SearchQuery) (Co
 //	query - query attributes and limits
 // Return
 //	list - all found contacts
-func (c *ClientConnection) ContactsGetFromCache(folderIds KIdList, query SearchQuery) (ContactList, error) {
+//  totalItems - number of contacts found if there is no limit
+func (c *ClientConnection) ContactsGetFromCache(folderIds KIdList, query SearchQuery) (ContactList, int, error) {
 	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		FolderIds KIdList     `json:"folderIds"`
@@ -153,15 +156,16 @@ func (c *ClientConnection) ContactsGetFromCache(folderIds KIdList, query SearchQ
 	}{folderIds, query}
 	data, err := c.CallRaw("Contacts.getFromCache", params)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 	list := struct {
 		Result struct {
-			List ContactList `json:"list"`
+			List       ContactList `json:"list"`
+			TotalItems int         `json:"totalItems"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, err
+	return list.Result.List, list.Result.TotalItems, err
 }
 
 // ContactsGetById - Get particular contacts. All members of struct Contact are filed in response.
@@ -239,22 +243,24 @@ func (c *ClientConnection) ContactsGetFromAttachment(id KId) (*Contact, error) {
 //	query - query attributes and limits (empty query obtain all resources)
 // Return
 //	list - all found resources
-func (c *ClientConnection) ContactsGetResources(query SearchQuery) (ResourceList, error) {
+//  totalItems - number of resources found if there is no limit
+func (c *ClientConnection) ContactsGetResources(query SearchQuery) (ResourceList, int, error) {
 	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		Query SearchQuery `json:"query"`
 	}{query}
 	data, err := c.CallRaw("Contacts.getResources", params)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 	list := struct {
 		Result struct {
-			List ResourceList `json:"list"`
+			List       ResourceList `json:"list"`
+			TotalItems int          `json:"totalItems"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, err
+	return list.Result.List, list.Result.TotalItems, err
 }
 
 // ContactsGetCertificate - Get a certificate for given email address.

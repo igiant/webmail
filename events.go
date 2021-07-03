@@ -76,7 +76,8 @@ type EventUpdateList []EventUpdate
 //	query - query attributes and limits
 // Return
 //	list - all found events
-func (c *ClientConnection) EventsGet(ids KIdList, query SearchQuery) (EventList, error) {
+//  totalItems - number of events found if there is no limit
+func (c *ClientConnection) EventsGet(ids KIdList, query SearchQuery) (EventList, int, error) {
 	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		Ids   KIdList     `json:"ids"`
@@ -84,15 +85,16 @@ func (c *ClientConnection) EventsGet(ids KIdList, query SearchQuery) (EventList,
 	}{ids, query}
 	data, err := c.CallRaw("Events.get", params)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 	list := struct {
 		Result struct {
-			List EventList `json:"list"`
+			List       EventList `json:"list"`
+			TotalItems int       `json:"totalItems"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, err
+	return list.Result.List, list.Result.TotalItems, err
 }
 
 // EventsGetById - Get an event.
