@@ -126,24 +126,23 @@ type MailList []Mail
 //	query - query attributes and limits
 // Return
 //	list - all found e-mails
-//	totalItems - number of mails found if there is no limit
-func (c *ClientConnection) MailsGet(folderIds KIdList, query SearchQuery) (MailList, int, error) {
+func (c *ClientConnection) MailsGet(folderIds KIdList, query SearchQuery) (MailList, error) {
+	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		FolderIds KIdList     `json:"folderIds"`
 		Query     SearchQuery `json:"query"`
 	}{folderIds, query}
 	data, err := c.CallRaw("Mails.get", params)
 	if err != nil {
-		return nil, 0, err
+		return nil, err
 	}
 	list := struct {
 		Result struct {
-			List       MailList `json:"list"`
-			TotalItems int      `json:"totalItems"`
+			List MailList `json:"list"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, list.Result.TotalItems, err
+	return list.Result.List, err
 }
 
 // MailsGetPageWithId - Get a list of e-mails.
@@ -153,8 +152,8 @@ func (c *ClientConnection) MailsGet(folderIds KIdList, query SearchQuery) (MailL
 //	id - global identifier of requested email
 // Return
 //	list - all found e-mails
-//	totalItems - number of mails found if there is no limit
-func (c *ClientConnection) MailsGetPageWithId(folderIds KIdList, query SearchQuery, id KId) (MailList, int, int, error) {
+func (c *ClientConnection) MailsGetPageWithId(folderIds KIdList, query SearchQuery, id KId) (MailList, int, error) {
+	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		FolderIds KIdList     `json:"folderIds"`
 		Query     SearchQuery `json:"query"`
@@ -162,17 +161,16 @@ func (c *ClientConnection) MailsGetPageWithId(folderIds KIdList, query SearchQue
 	}{folderIds, query, id}
 	data, err := c.CallRaw("Mails.getPageWithId", params)
 	if err != nil {
-		return nil, 0, 0, err
+		return nil, 0, err
 	}
 	list := struct {
 		Result struct {
-			List       MailList `json:"list"`
-			Start      int      `json:"start"`
-			TotalItems int      `json:"totalItems"`
+			List  MailList `json:"list"`
+			Start int      `json:"start"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, list.Result.Start, list.Result.TotalItems, err
+	return list.Result.List, list.Result.Start, err
 }
 
 // MailsGetById - Get one particular email. All members of struct Mail are filed in response.

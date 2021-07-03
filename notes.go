@@ -45,24 +45,23 @@ type NoteList []Note
 //	query - query attributes and limits
 // Return
 //	list - all found notes
-//	totalItems - number of notes found if there is no limit
-func (c *ClientConnection) NotesGet(folderIds KIdList, query SearchQuery) (NoteList, int, error) {
+func (c *ClientConnection) NotesGet(folderIds KIdList, query SearchQuery) (NoteList, error) {
+	query = addMissedParametersToSearchQuery(query)
 	params := struct {
 		FolderIds KIdList     `json:"folderIds"`
 		Query     SearchQuery `json:"query"`
 	}{folderIds, query}
 	data, err := c.CallRaw("Notes.get", params)
 	if err != nil {
-		return nil, 0, err
+		return nil, err
 	}
 	list := struct {
 		Result struct {
-			List       NoteList `json:"list"`
-			TotalItems int      `json:"totalItems"`
+			List NoteList `json:"list"`
 		} `json:"result"`
 	}{}
 	err = json.Unmarshal(data, &list)
-	return list.Result.List, list.Result.TotalItems, err
+	return list.Result.List, err
 }
 
 // NotesGetById - Get an note.

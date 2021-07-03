@@ -60,3 +60,16 @@ func (c *ClientConnection) CallRaw(method string, params interface{}) ([]byte, e
 	}
 	return data, nil
 }
+
+func addMissedParametersToSearchQuery(query SearchQuery) SearchQuery {
+	if query.Fields == nil {
+		query.Fields = []string{}
+	}
+	if query.Conditions == nil {
+		query.Conditions = SubConditionList{}
+	}
+	if query.Combining == "" {
+		query.Combining = Or
+	}
+	return query
+}
