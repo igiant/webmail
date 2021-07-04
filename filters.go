@@ -45,7 +45,6 @@ func (c *ClientConnection) FiltersGet() (uint64, FilterRuleList, error) {
 }
 
 // FiltersGetById - Obtain particular rule in a script form.
-// Parameters
 //	currentDataStamp - the stamp obtained via function get
 //	id - ID of rule
 // Return
@@ -69,7 +68,6 @@ func (c *ClientConnection) FiltersGetById(currentDataStamp uint64, id KId) (*Fil
 }
 
 // FiltersGenerateRule - Obtain rule in a script form generated from pattern.
-// Parameters
 //	pattern - structured rule
 // Return
 //	rule - the script
@@ -91,7 +89,6 @@ func (c *ClientConnection) FiltersGenerateRule(pattern FilterRule) (*FilterRawRu
 }
 
 // FiltersSet - by user
-// Parameters
 //	currentDataStamp - the stamp which was assigned to you by
 //	filters - list of all messages filtering rules defined
 // Return
@@ -115,7 +112,6 @@ func (c *ClientConnection) FiltersSet(currentDataStamp uint64, filters FilterRul
 }
 
 // FiltersSetById - Set particular rule.
-// Parameters
 //	currentDataStamp - the stamp obtained via function get
 //	rule - the new script
 // Return

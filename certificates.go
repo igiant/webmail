@@ -41,7 +41,6 @@ const (
 // the personal certificate store manager class
 
 // CertificatesInit - Initialize the personal certificate store
-// Parameters
 //	password - password of certificate store
 //	isLoginPassword - given password is the same which user uses to log in
 func (c *ClientConnection) CertificatesInit(password string, isLoginPassword bool) error {
@@ -54,7 +53,6 @@ func (c *ClientConnection) CertificatesInit(password string, isLoginPassword boo
 }
 
 // CertificatesOpen - Open the personal certificate store
-// Parameters
 //	password - password of certificate store
 func (c *ClientConnection) CertificatesOpen(password string) error {
 	params := struct {
@@ -124,7 +122,6 @@ func (c *ClientConnection) CertificatesGetStatus() (*CertStoreStatus, error) {
 }
 
 // CertificatesToSource - Obtain source (plain-text representation) of the certificate
-// Parameters
 //	id - global identifier
 // Return
 //	source - certificate in plain text
@@ -146,7 +143,6 @@ func (c *ClientConnection) CertificatesToSource(id KId) (string, error) {
 }
 
 // CertificatesOpenWithOldLoginPassword - Calling is valid only if login password is used as well for certificate store.
-// Parameters
 //	oldPassword - password to certificate store (old login password)
 func (c *ClientConnection) CertificatesOpenWithOldLoginPassword(oldPassword string) error {
 	params := struct {
@@ -166,7 +162,6 @@ func (c *ClientConnection) CertificatesOpenEditWithOldLoginPassword(oldPassword 
 }
 
 // CertificatesReset - Reset personal certificate store to uninitialized state. All current store will be removed!
-// Parameters
 //	loginPassword - current login password to verify user)
 func (c *ClientConnection) CertificatesReset(loginPassword string) error {
 	params := struct {
@@ -177,7 +172,6 @@ func (c *ClientConnection) CertificatesReset(loginPassword string) error {
 }
 
 // CertificatesOpenEdit - Unlock edit functions
-// Parameters
 //	password - password of certificate store
 func (c *ClientConnection) CertificatesOpenEdit(password string) error {
 	params := struct {
@@ -194,7 +188,6 @@ func (c *ClientConnection) CertificatesCloseEdit() error {
 }
 
 // CertificatesSetPreferred - Preferred flag is removed from other certificates issued for the same email address.
-// Parameters
 //	id - ID of the certificate
 func (c *ClientConnection) CertificatesSetPreferred(id KId) error {
 	params := struct {
@@ -226,7 +219,6 @@ func (c *ClientConnection) CertificatesImportPKCS12(fileId KId, password string)
 }
 
 // CertificatesExportPKCS12 - Note: "export" is a keyword in C++, so the name of the method must be changed: exportPrivateKey
-// Parameters
 //	id - ID of the certificate
 // Return
 //	fileDownload - description of the output file

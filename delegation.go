@@ -35,7 +35,6 @@ func (c *ClientConnection) DelegationGet() (OutboundDelagationList, error) {
 }
 
 // DelegationSet - Set list of accounts for delegation.
-// Parameters
 //	list - delegates; Only type 'User' is valid.
 func (c *ClientConnection) DelegationSet(list OutboundDelagationList) error {
 	params := struct {
@@ -63,7 +62,6 @@ func (c *ClientConnection) DelegationGetInbound() (InboundDelegationList, error)
 }
 
 // DelegationSetInbound - Set list of accounts whom is the user delegate.
-// Parameters
 //	list - delegates
 func (c *ClientConnection) DelegationSetInbound(list InboundDelegationList) error {
 	params := struct {

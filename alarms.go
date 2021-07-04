@@ -18,7 +18,6 @@ type Alarm struct {
 type AlarmList []Alarm
 
 // AlarmsDismiss - the method then a reminder will be removed as well as this value.
-// Parameters
 //	itemIds - list of event or occurrence IDs
 // Return
 //	errors - list of errors
@@ -40,7 +39,6 @@ func (c *ClientConnection) AlarmsDismiss(itemIds KIdList) (ErrorList, error) {
 }
 
 // AlarmsGet - Get alarms. Alarms are searched in range from now to value 'until'.
-// Parameters
 //	since - lower bound of time range
 //	until - upper bound of time range
 // Return
@@ -64,7 +62,6 @@ func (c *ClientConnection) AlarmsGet(since UtcTime, until UtcTime) (AlarmList, e
 }
 
 // AlarmsSet - Value is placed in X-NEXT-ALARM property.
-// Parameters
 //	nextTime - time
 //	itemIds - list of event or occurrence IDs
 // Return

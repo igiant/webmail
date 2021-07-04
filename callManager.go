@@ -40,7 +40,6 @@ func (c *ClientConnection) CallManagerGetExtensions() (OperatorExtensionList, er
 }
 
 // CallManagerDial - Dials requested phone number
-// Parameters
 //	extensionId - is phone number from which will be call initiated
 //	phoneNumber - is phone number to call
 // Return
@@ -64,7 +63,6 @@ func (c *ClientConnection) CallManagerDial(extensionId KId, phoneNumber string) 
 }
 
 // CallManagerLogin - Dials requested phone number
-// Parameters
 //	userName - user login name
 //	password - user password
 func (c *ClientConnection) CallManagerLogin(userName string, password string) error {

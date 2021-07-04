@@ -40,7 +40,6 @@ type NoteList []Note
 // Notes management.
 
 // NotesGet - Get a list of notes.
-// Parameters
 //	folderIds - list of global identifiers of folders to be listed.
 //	query - query attributes and limits
 // Return
@@ -67,7 +66,6 @@ func (c *ClientConnection) NotesGet(folderIds KIdList, query SearchQuery) (NoteL
 }
 
 // NotesGetById - Get an note.
-// Parameters
 //	ids - global identifiers of requested notes
 // Return
 //	errors - list of errors
@@ -91,7 +89,6 @@ func (c *ClientConnection) NotesGetById(ids KIdList) (ErrorList, NoteList, error
 }
 
 // NotesRemove - Remove a list of notes.
-// Parameters
 //	ids - list of global identifiers of notes to be removed
 // Return
 //	errors - list of notes that failed to remove
@@ -113,7 +110,6 @@ func (c *ClientConnection) NotesRemove(ids KIdList) (ErrorList, error) {
 }
 
 // NotesCopy - Copy existing notes to folder
-// Parameters
 //	ids - list of global identifiers of notes to be copied
 //	folder - target folder
 // Return
@@ -138,7 +134,6 @@ func (c *ClientConnection) NotesCopy(ids KIdList, folder KId) (ErrorList, Create
 }
 
 // NotesCreate - Create notes.
-// Parameters
 //	notes - list of notes to be created
 // Return
 //	errors - list of notes that failed on creation
@@ -183,7 +178,6 @@ func (c *ClientConnection) NotesSet(notes NoteList) (ErrorList, SetResultList, e
 }
 
 // NotesMove - Move existing notes to folder
-// Parameters
 //	ids - list of global identifiers of notes to be moved
 //	folder - target folder
 // Return

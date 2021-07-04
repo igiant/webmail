@@ -72,7 +72,6 @@ type EventUpdateList []EventUpdate
 // Constants for composing kerio::web::SearchQuery
 
 // EventsGet - Get a list of events.
-// Parameters
 //	query - query attributes and limits
 // Return
 //	list - all found events
@@ -98,7 +97,6 @@ func (c *ClientConnection) EventsGet(ids KIdList, query SearchQuery) (EventList,
 }
 
 // EventsGetById - Get an event.
-// Parameters
 //	id - global identifier of requested event
 // Return
 //	result - found event
@@ -120,7 +118,6 @@ func (c *ClientConnection) EventsGetById(id KId) (*Event, error) {
 }
 
 // EventsGetEventUpdates - Get updates or invitations from Calendar INBOX by global identifiers.
-// Parameters
 //	ids - list of global identifiers of EventUpdates
 // Return
 //	errors - list of updates that failed to optain
@@ -161,7 +158,6 @@ func (c *ClientConnection) EventsGetEventUpdateList() (EventUpdateList, error) {
 }
 
 // EventsGetSharedEventUpdateList - Get all updates or invitations from Calendar INBOX.
-// Parameters
 //	mailboxIds - list of global identifiers of mailboxes
 // Return
 //	errors - list of mailboxes that failed to search
@@ -185,7 +181,6 @@ func (c *ClientConnection) EventsGetSharedEventUpdateList(mailboxIds KIdList) (E
 }
 
 // EventsRemove - Remove a list of events.
-// Parameters
 //	ids - list of global identifiers of events to be removed
 // Return
 //	errors - list of events that failed to remove
@@ -207,7 +202,6 @@ func (c *ClientConnection) EventsRemove(ids KIdList) (ErrorList, error) {
 }
 
 // EventsRemoveEventUpdates - Remove a list of EventUpdates.
-// Parameters
 //	ids - list of global identifiers of EventUpdates to be removed
 // Return
 //	errors - list of updates that failed to remove
@@ -229,7 +223,6 @@ func (c *ClientConnection) EventsRemoveEventUpdates(ids KIdList) (ErrorList, err
 }
 
 // EventsCopy - Copy existing events to folder
-// Parameters
 //	ids - list of global identifiers of events to be copied
 //	folder - target folder
 // Return
@@ -254,7 +247,6 @@ func (c *ClientConnection) EventsCopy(ids KIdList, folder KId) (ErrorList, Creat
 }
 
 // EventsCreate - Create events.
-// Parameters
 //	events - list of events to be created
 // Return
 //	errors - list of events that failed on creation
@@ -278,7 +270,6 @@ func (c *ClientConnection) EventsCreate(events EventList) (ErrorList, CreateResu
 }
 
 // EventsCreateFromAttachment - Get an occurrence.
-// Parameters
 //	attachmentId - global identifier of attachment
 // Return
 //	result - result
@@ -300,7 +291,6 @@ func (c *ClientConnection) EventsCreateFromAttachment(attachmentId KId) (*Create
 }
 
 // EventsSet - Set events.
-// Parameters
 //	events - modifications of events.
 // Return
 //	errors - error message list
@@ -323,7 +313,6 @@ func (c *ClientConnection) EventsSet(events EventList) (ErrorList, SetResultList
 }
 
 // EventsMove - Move existing events to folder
-// Parameters
 //	ids - list of global identifiers of events to be moved
 //	folder - target folder
 // Return

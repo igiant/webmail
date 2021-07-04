@@ -187,7 +187,6 @@ func (c *ClientConnection) SessionGetUserVoiceUrl() (string, error) {
 }
 
 // Login - create connection to api server and get security token.
-// Parameters
 //	userName
 //	password
 //	application - application descriminator, note that with session to admin you cannot log in webmail
@@ -220,7 +219,6 @@ func (c *ClientConnection) Logout() error {
 }
 
 // SessionSetOutOfOffice - Set the Auto Reply settings
-// Parameters
 //	settings - details
 func (c *ClientConnection) SessionSetOutOfOffice(settings OutOfOfficeSettings) error {
 	params := struct {
@@ -231,7 +229,6 @@ func (c *ClientConnection) SessionSetOutOfOffice(settings OutOfOfficeSettings) e
 }
 
 // SessionSetPassword - Change password of current user.
-// Parameters
 //	currentPassword - current users' password
 //	newPassword - new users' password
 func (c *ClientConnection) SessionSetPassword(currentPassword string, newPassword string) error {
@@ -244,7 +241,6 @@ func (c *ClientConnection) SessionSetPassword(currentPassword string, newPasswor
 }
 
 // SessionSetSettings - Set settings of the currently logged user.
-// Parameters
 //	settings - WAM settings
 func (c *ClientConnection) SessionSetSettings(settings jsonstring) error {
 	params := struct {
@@ -255,7 +251,6 @@ func (c *ClientConnection) SessionSetSettings(settings jsonstring) error {
 }
 
 // SessionSetSpamSettings - Set the spam settings
-// Parameters
 //	settings - details
 func (c *ClientConnection) SessionSetSpamSettings(settings SpamSettings) error {
 	params := struct {
@@ -266,7 +261,6 @@ func (c *ClientConnection) SessionSetSpamSettings(settings SpamSettings) error {
 }
 
 // SessionSetUserInfo - Set user details.
-// Parameters
 //	userDetails - details about the currently logged user
 func (c *ClientConnection) SessionSetUserInfo(userDetails UserInfo) error {
 	params := struct {
@@ -294,7 +288,6 @@ func (c *ClientConnection) SessionWhoAmI() (*UserInfo, error) {
 }
 
 // SessionGetMobileDeviceList - Obtain a list of mobile devices of given user.
-// Parameters
 //	query - query attributes and limits
 // Return
 //	list - mobile devices of given user
@@ -319,7 +312,6 @@ func (c *ClientConnection) SessionGetMobileDeviceList(query SearchQuery) (Mobile
 }
 
 // SessionRemoveMobileDevice - Remove mobile device from the list of user's mobile devices.
-// Parameters
 //	deviceId - ID of user's mobile device to be removed
 func (c *ClientConnection) SessionRemoveMobileDevice(deviceId string) error {
 	params := struct {
@@ -330,7 +322,6 @@ func (c *ClientConnection) SessionRemoveMobileDevice(deviceId string) error {
 }
 
 // SessionWipeMobileDevice - Wipe user's mobile device.
-// Parameters
 //	deviceId - ID of user's mobile device to be wiped
 //	password - password of current user
 func (c *ClientConnection) SessionWipeMobileDevice(deviceId string, password string) error {
@@ -343,7 +334,6 @@ func (c *ClientConnection) SessionWipeMobileDevice(deviceId string, password str
 }
 
 // SessionCancelWipeMobileDevice - Cancel wiping of user's mobile device.
-// Parameters
 //	deviceId - ID of user's mobile device to cancel wipe
 func (c *ClientConnection) SessionCancelWipeMobileDevice(deviceId string) error {
 	params := struct {
@@ -369,7 +359,6 @@ func (c *ClientConnection) SessionGetSignatureImageList() (ImageList, error) {
 }
 
 // SessionAddSignatureImage - Add image into user's store
-// Parameters
 //	ids - Upload IDs of images to add into user's store
 // Return
 //	errors - list of errors
@@ -393,7 +382,6 @@ func (c *ClientConnection) SessionAddSignatureImage(ids KIdList) (ErrorList, Ima
 }
 
 // SessionRemoveSignatureImage - Remove image from user's store
-// Parameters
 //	ids - Image IDs to remove
 func (c *ClientConnection) SessionRemoveSignatureImage(ids KIdList) (ErrorList, error) {
 	params := struct {

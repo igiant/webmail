@@ -121,7 +121,6 @@ type MailList []Mail
 // Mail store manager class
 
 // MailsGet - Get a list of e-mails.
-// Parameters
 //	folderIds - list of global identifiers of folders to be listed.
 //	query - query attributes and limits
 // Return
@@ -148,7 +147,6 @@ func (c *ClientConnection) MailsGet(folderIds KIdList, query SearchQuery) (MailL
 }
 
 // MailsGetPageWithId - Get a list of e-mails.
-// Parameters
 //	folderIds - list of global identifiers of folders to be listed
 //	query - query attributes and limits. Mind that offset is not used
 //	id - global identifier of requested email
@@ -178,7 +176,6 @@ func (c *ClientConnection) MailsGetPageWithId(folderIds KIdList, query SearchQue
 }
 
 // MailsGetById - Get one particular email. All members of struct Mail are filed in response.
-// Parameters
 //	ids - global identifiers of requested emails
 // Return
 //	errors - list of email that failed to obtain
@@ -202,7 +199,6 @@ func (c *ClientConnection) MailsGetById(ids KIdList) (ErrorList, MailList, error
 }
 
 // MailsCreate - ErrorCodeSendingFailed - Failed to send email and failed to create mail.
-// Parameters
 //	mails - new mails.
 // Return
 //	errors - error message list
@@ -226,7 +222,6 @@ func (c *ClientConnection) MailsCreate(mails MailList) (ErrorList, CreateResultL
 }
 
 // MailsRemove - Remove a list of mails.
-// Parameters
 //	ids - list of global identifiers of mails to be removed
 // Return
 //	errors - list of mails that failed to remove
@@ -248,7 +243,6 @@ func (c *ClientConnection) MailsRemove(ids KIdList) (ErrorList, error) {
 }
 
 // MailsSet - ErrorCodeSendingFailed - Failed to send email and failed to update mail.
-// Parameters
 //	mails - modifications of mails.
 // Return
 //	errors - error message list
@@ -271,7 +265,6 @@ func (c *ClientConnection) MailsSet(mails MailList) (ErrorList, SetResultList, e
 }
 
 // MailsSetAllSeen - Set all e-mail in folder as seen.
-// Parameters
 //	folderId - target folder
 func (c *ClientConnection) MailsSetAllSeen(folderId KId) error {
 	params := struct {
@@ -282,7 +275,6 @@ func (c *ClientConnection) MailsSetAllSeen(folderId KId) error {
 }
 
 // MailsCopy - Copy existing e-mails to folder
-// Parameters
 //	ids - list of global identifiers of mails to be copied
 //	folder - target folder
 // Return
@@ -307,7 +299,6 @@ func (c *ClientConnection) MailsCopy(ids KIdList, folder KId) (ErrorList, Create
 }
 
 // MailsMove - Move existing e-mails to folder
-// Parameters
 //	ids - list of global identifiers of e-mails to be moved
 //	folder - target folder
 // Return
@@ -332,7 +323,6 @@ func (c *ClientConnection) MailsMove(ids KIdList, folder KId) (ErrorList, Create
 }
 
 // MailsExportAttachments - Export attachments from mail and pack them into zip.
-// Parameters
 //	attachmentIds - list of global identifiers of attachments. All attachments must be from the same e-mail.
 // Return
 //	fileDownload - description of output file

@@ -66,7 +66,6 @@ type ResourceList []Resource
 // Contacts management.
 
 // ContactsCopy - Copy existing contacts to folder
-// Parameters
 //	ids - list of global identifiers of contacts to be copied
 //	folder - target folder
 // Return
@@ -91,7 +90,6 @@ func (c *ClientConnection) ContactsCopy(ids KIdList, folder KId) (ErrorList, Cre
 }
 
 // ContactsCreate - Create contact in particular folder
-// Parameters
 //	contacts - new contacts; Field 'folderId' must be set.
 // Return
 //	errors - error message list
@@ -115,7 +113,6 @@ func (c *ClientConnection) ContactsCreate(contacts ContactList) (ErrorList, Crea
 }
 
 // ContactsGet - Get a list of contacts.
-// Parameters
 //	folderIds - list of global identifiers of folders to be listed.
 //	query - query attributes and limits
 // Return
@@ -142,7 +139,6 @@ func (c *ClientConnection) ContactsGet(folderIds KIdList, query SearchQuery) (Co
 }
 
 // ContactsGetFromCache - id, folderId, watermark, type, commonName, titleAfter, titleBefore, firstName, middleName, surName, nickName, emailAddresses, phoneNumbers, photo
-// Parameters
 //	folderIds - list of global identifiers of folders to be listed.
 //	query - query attributes and limits
 // Return
@@ -169,7 +165,6 @@ func (c *ClientConnection) ContactsGetFromCache(folderIds KIdList, query SearchQ
 }
 
 // ContactsGetById - Get particular contacts. All members of struct Contact are filed in response.
-// Parameters
 //	ids - global identifiers of contact.
 // Return
 //	errors - list of errors which happened
@@ -193,7 +188,6 @@ func (c *ClientConnection) ContactsGetById(ids KIdList) (ErrorList, ContactList,
 }
 
 // ContactsGetByIdFromCache - id, folderId, watermark, type, commonName, titleAfter, titleBefore, firstName, middleName, surName, nickName, emailAddresses, phoneNumbers, photo
-// Parameters
 //	ids - global identifiers of contact.
 // Return
 //	errors - list of errors which happened
@@ -217,7 +211,6 @@ func (c *ClientConnection) ContactsGetByIdFromCache(ids KIdList) (ErrorList, Con
 }
 
 // ContactsGetFromAttachment - Get contact from attachment.
-// Parameters
 //	id - global identifiers of mail attachment.
 // Return
 //	result - contact of given IDs. All members of struct are returned.
@@ -239,7 +232,6 @@ func (c *ClientConnection) ContactsGetFromAttachment(id KId) (*Contact, error) {
 }
 
 // ContactsGetResources - Get a list of resources that an user can schedule.
-// Parameters
 //	query - query attributes and limits (empty query obtain all resources)
 // Return
 //	list - all found resources
@@ -264,7 +256,6 @@ func (c *ClientConnection) ContactsGetResources(query SearchQuery) (ResourceList
 }
 
 // ContactsGetCertificate - Get a certificate for given email address.
-// Parameters
 //	email - email address of requested certificate
 //	id - global identifier of contacts to be searched
 // Return
@@ -288,7 +279,6 @@ func (c *ClientConnection) ContactsGetCertificate(email string, id KId) (*Certif
 }
 
 // ContactsRemove - Remove a list of contacts.
-// Parameters
 //	ids - list of global identifiers of contacts to be removed
 // Return
 //	errors - list of contacts that failed to remove
@@ -310,7 +300,6 @@ func (c *ClientConnection) ContactsRemove(ids KIdList) (ErrorList, error) {
 }
 
 // ContactsSet - Set existing contacts.
-// Parameters
 //	contacts - modifications of contacts. Field 'folderId' must be set.
 // Return
 //	errors - error message list
@@ -333,7 +322,6 @@ func (c *ClientConnection) ContactsSet(contacts ContactList) (ErrorList, SetResu
 }
 
 // ContactsMove - Move existing contacts to folder
-// Parameters
 //	ids - list of global identifiers of contacts to be moved
 //	folder - target folder
 // Return

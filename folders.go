@@ -96,7 +96,6 @@ type SharedMailboxList []SharedMailbox
 // Folder store manager class
 
 // FoldersClearToItemId - Remove all items in folder older then given item ID including. If folder is type of 'FMail' the items are moved to Delete Items or throw away if folder is Delete Items.
-// Parameters
 //	itemId - the last item ID
 func (c *ClientConnection) FoldersClearToItemId(itemId KId) error {
 	params := struct {
@@ -107,7 +106,6 @@ func (c *ClientConnection) FoldersClearToItemId(itemId KId) error {
 }
 
 // FoldersCreate - Create new folders
-// Parameters
 //	folders - list of folders to create
 // Return
 //	errors - error message list
@@ -236,7 +234,6 @@ func (c *ClientConnection) FoldersGetSharedMailboxList() (SharedMailboxList, err
 }
 
 // FoldersMoveByType - Take a note that mail folders are moved recursively (the whole subtree)! Folders of other types (e.g. calendars) are not moved recursively.
-// Parameters
 //	targetId - target folder ID
 //	ids - folder IDs
 // Return
@@ -260,7 +257,6 @@ func (c *ClientConnection) FoldersMoveByType(targetId KId, ids KIdList) (ErrorLi
 }
 
 // FoldersSet - Set folder properties
-// Parameters
 //	folders - properties to save
 // Return
 //	errors - error message list
@@ -282,7 +278,6 @@ func (c *ClientConnection) FoldersSet(folders FolderList) (ErrorList, error) {
 }
 
 // FoldersRemove - Remove folder. Sub-folders are removed if recursive is true.
-// Parameters
 //	ids - folder IDs
 //	recursive - remove sub-folders
 // Return
@@ -306,7 +301,6 @@ func (c *ClientConnection) FoldersRemove(ids KIdList, recursive bool) (ErrorList
 }
 
 // FoldersRemoveByType - Take a note that mail folders are removed recursively! Folders of other types (e.g. calendars) are not removed recursively.
-// Parameters
 //	ids - folder IDs
 // Return
 //	errors - error message list
@@ -328,7 +322,6 @@ func (c *ClientConnection) FoldersRemoveByType(ids KIdList) (ErrorList, error) {
 }
 
 // FoldersGetPermissions - Get sharing permissions
-// Parameters
 //	folderId - ID of folder
 // Return
 //	permissions - sharing settings
@@ -350,7 +343,6 @@ func (c *ClientConnection) FoldersGetPermissions(folderId KId) (FolderPermission
 }
 
 // FoldersSetPermissions - Set sharing permissions
-// Parameters
 //	permissions - sharing settings
 //	folderId - ID of folder
 func (c *ClientConnection) FoldersSetPermissions(permissions FolderPermissionList, folderId KId, recursive bool) error {
@@ -388,7 +380,6 @@ func (c *ClientConnection) FoldersSetSubscriptionList(folderIds KIdList) error {
 }
 
 // FoldersCopyAllMessages - Copies (or moves) all messages from the source folder to the destination
-// Parameters
 //	sourceId - ID of the source folder
 //	destId - ID of the destionation folder
 //	doMove - if true move the messages instead of copy the

@@ -45,7 +45,6 @@ type OccurrenceList []Occurrence
 // Constants for composing kerio::web::SearchQuery
 
 // OccurrencesGet - Items rule and reminder in the occurrence aren't filled. If necessary use getOccurrence method.
-// Parameters
 //	folderIds - list of global identifiers of folders to be listed
 //	query - query attributes and limits
 // Return
@@ -93,7 +92,6 @@ func (c *ClientConnection) OccurrencesGetById(ids KIdList) (ErrorList, Occurrenc
 }
 
 // OccurrencesGetFromAttachment - Get an occurrence.
-// Parameters
 //	attachmentId - global identifier of attachment
 // Return
 //	result - found occurrence
@@ -115,7 +113,6 @@ func (c *ClientConnection) OccurrencesGetFromAttachment(attachmentId KId) (*Occu
 }
 
 // OccurrencesRemove - Remove a list of occurrences.
-// Parameters
 //	occurrences - occurrences to be removed. Only fields 'id' and 'modification' are required.
 // Return
 //	errors - list of occurrences that failed to remove
@@ -137,7 +134,6 @@ func (c *ClientConnection) OccurrencesRemove(occurrences OccurrenceList) (ErrorL
 }
 
 // OccurrencesSet - Set occurrences.
-// Parameters
 //	occurrences - modifications of occurrences.
 // Return
 //	errors - error message list
@@ -160,7 +156,6 @@ func (c *ClientConnection) OccurrencesSet(occurrences OccurrenceList) (ErrorList
 }
 
 // OccurrencesSetPartStatus - Set part status to occurrence or event and send response to organizer.
-// Parameters
 //	id - identifiers of events or occurrence
 //	response - response and status
 func (c *ClientConnection) OccurrencesSetPartStatus(id KId, response PartStatusResponse) error {

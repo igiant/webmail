@@ -42,7 +42,6 @@ type TaskList []Task
 // Tasks management.
 
 // TasksGet - Get a list of tasks.
-// Parameters
 //	folderIds - list of global identifiers of folders to be listed.
 //	query - query attributes and limits
 // Return
@@ -69,7 +68,6 @@ func (c *ClientConnection) TasksGet(folderIds KIdList, query SearchQuery) (TaskL
 }
 
 // TasksGetById - Get an tasks.
-// Parameters
 //	ids - global identifiers of requested tasks
 // Return
 //	errors - list of tasks that failed to obtain
@@ -93,7 +91,6 @@ func (c *ClientConnection) TasksGetById(ids KIdList) (ErrorList, TaskList, error
 }
 
 // TasksRemove - Remove a list of tasks.
-// Parameters
 //	ids - list of global identifiers of tasks to be removed
 // Return
 //	errors - list of tasks that failed to remove
@@ -115,7 +112,6 @@ func (c *ClientConnection) TasksRemove(ids KIdList) (ErrorList, error) {
 }
 
 // TasksCopy - Copy existing tasks to folder
-// Parameters
 //	ids - list of global identifiers of tasks to be copied
 //	folder - target folder
 // Return
@@ -183,7 +179,6 @@ func (c *ClientConnection) TasksSet(tasks TaskList) (ErrorList, SetResultList, e
 }
 
 // TasksMove - Move existing tasks to folder
-// Parameters
 //	ids - list of global identifiers of tasks to be moved
 //	folder - target folder
 // Return

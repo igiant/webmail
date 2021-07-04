@@ -61,7 +61,6 @@ type ChangeList []Change
 // Changes manager class
 
 // ChangesGet - Is permitted only one long-poll request with the same 'lastSyncKey'.
-// Parameters
 //	lastSyncKey - last watermark
 //	timeout - max time to wait for new changes. If value is zero response is returned imediately.
 // Return
@@ -87,7 +86,6 @@ func (c *ClientConnection) ChangesGet(lastSyncKey SyncKey, timeout int) (ChangeL
 }
 
 // ChangesGetAccount - Get changes for all accessible folders of particular user or resource.
-// Parameters
 //	lastAsyncKey - last watermark
 //	folderIds - IDs of subcribed folders
 // Return
@@ -113,7 +111,6 @@ func (c *ClientConnection) ChangesGetAccount(lastAsyncKey AccountSyncKey, folder
 }
 
 // ChangesKillRequest - Kill current running Changes.get's request. It supposed that timeout was specified > 0.
-// Parameters
 //	lastSyncKey - last watermark
 func (c *ClientConnection) ChangesKillRequest(lastSyncKey SyncKey) error {
 	params := struct {
@@ -124,7 +121,6 @@ func (c *ClientConnection) ChangesKillRequest(lastSyncKey SyncKey) error {
 }
 
 // ChangesGetFolder - Get changes in a folder.
-// Parameters
 //	folderId - folder from which we want get item changes
 //	lastSyncKey - last synckey (watermark)
 // Return
@@ -183,7 +179,6 @@ func (c *ClientConnection) ChangesGetAccountSyncKey(mailboxId KId) (*AccountSync
 }
 
 // ChangesGetFolderSyncKey - Get actual sync key for a folder.
-// Parameters
 //	folderId - wanted folder
 // Return
 //	syncKey - actual synckey (watermark) for folder

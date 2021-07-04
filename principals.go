@@ -45,7 +45,6 @@ func (c *ClientConnection) PrincipalsGet(users bool, groups bool, domains bool) 
 }
 
 // PrincipalsGetByEmail - Find principal according his primary email (login name) on server.
-// Parameters
 //	email - email/login name
 // Return
 //	principal - principal

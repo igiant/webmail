@@ -39,7 +39,6 @@ func (c *ClientConnection) IntegrationGetASyncFolderList() (SyncFolderList, erro
 }
 
 // IntegrationSetASyncFolderList - Set folder properties
-// Parameters
 //	folders - properties to save
 // Return
 //	errors - error message list
@@ -78,7 +77,6 @@ func (c *ClientConnection) IntegrationGetIPhoneSyncFolderList() (SyncFolderList,
 }
 
 // IntegrationSetIPhoneSyncFolderList - Set folder properties (task and calendars only)
-// Parameters
 //	folders - properties to save
 // Return
 //	errors - error message list
