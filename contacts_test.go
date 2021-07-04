@@ -1,9 +1,10 @@
 package webmail
 
 import (
-	"gopkg.in/yaml.v3"
 	"os"
 	"testing"
+
+	"gopkg.in/yaml.v3"
 )
 
 func TestConfig_ContactsRequests(t *testing.T) {
